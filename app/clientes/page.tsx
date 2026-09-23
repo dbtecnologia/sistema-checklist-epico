@@ -1,12 +1,12 @@
 "use client";
 
 import { FormEvent, useEffect, useState } from "react";
-import { createClient } from "@/lib/supabase/client";
+import { createSupabaseBrowserClient } from "@/lib/supabase/client";
 
 type Client = { id: string; legal_name: string; trade_name: string | null; tax_id: string | null; email: string | null; status: string };
 
 export default function ClientsPage() {
-  const supabase = createClient();
+  const supabase = createSupabaseBrowserClient();
   const [clients, setClients] = useState<Client[]>([]);
   const [organizationId, setOrganizationId] = useState<string | null>(null);
   const [form, setForm] = useState({ legal_name: "", trade_name: "", tax_id: "", email: "" });
